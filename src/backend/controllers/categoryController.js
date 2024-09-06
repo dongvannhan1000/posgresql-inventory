@@ -17,7 +17,9 @@ exports.getCategoryById = async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM Category WHERE id = $1', [req.params.id]);
     if (result.rows.length > 0) {
-      res.render('category', { category: result.rows[0] });
+      const category = result.rows[0];
+      const items = await db.query('SELECT * FROM Item WHERE category_id = $1', [category.id]);
+      res.render('category', { category, items: items.rows });
     } else {
       res.status(404).json({ message: 'Category not found' });
     }

@@ -17,7 +17,9 @@ exports.getSupplierById = async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM Supplier WHERE id = $1', [req.params.id]);
     if (result.rows.length > 0) {
-      res.render('supplier', { supplier: result.rows[0] });
+      const supplier = result.rows[0];
+      const items = await db.query('SELECT * FROM Item WHERE id IN (SELECT item_id FROM Item_Supplier WHERE supplier_id = $1)', [supplier.id]);
+      res.render('supplier', { supplier, items: items.rows });
     } else {
       res.status(404).json({ message: 'Supplier not found' });
     }

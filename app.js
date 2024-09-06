@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const indexController = require('./src/backend/controllers/indexController');
 const categoryRoutes = require('./src/backend/routes/categoryRoutes');
 const itemRoutes = require('./src/backend/routes/itemRoutes');
 const supplierRoutes = require('./src/backend/routes/supplierRoutes');
@@ -17,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/categories', categoryRoutes);
 app.use('/items', itemRoutes);
 app.use('/suppliers', supplierRoutes);
+
+app.get('/', indexController.getHome);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

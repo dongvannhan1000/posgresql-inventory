@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to Inventory App</h1>
+    
+    <h2>Categories</h2>
+    <ul>
+        <% categories.forEach(category => { %>
+            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+        <% }); %>
+    </ul>
+
+    <h2>Items</h2>
+    <ul>
+        <% items.forEach(item => { %>
+            <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+        <% }); %>
+    </ul>
+
+    <h2>Suppliers</h2>
+    <ul>
+        <% suppliers.forEach(supplier => { %>
+            <li><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

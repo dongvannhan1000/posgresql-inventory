@@ -9,6 +9,12 @@
     <h1>Item: <%= item.name %></h1>
     <p>Description: <%= item.description %></p>
     <p>Price: <%= item.price %></p>
+    <h2>Suppliers</h2>
+    <ul>
+        <% suppliers.forEach(supplier => { %>
+            <li><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></li>
+        <% }); %>
+    </ul>
     <a href="/items">Back to Items</a>
 </body>
 </html>

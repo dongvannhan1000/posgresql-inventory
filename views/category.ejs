@@ -8,6 +8,12 @@
 <body>
     <h1>Category: <%= category.name %></h1>
     <p>Description: <%= category.description %></p>
+    <h2>Items in this Category</h2>
+    <ul>
+        <% items.forEach(item => { %>
+            <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+        <% }); %>
+    </ul>
     <a href="/categories">Back to Categories</a>
 </body>
 </html>
