@@ -8,10 +8,12 @@
 <body>
     <h1>Supplier: <%= supplier.name %></h1>
     <p>Contact Info: <%= supplier.contact_info %></p>
+    <p>Address: <%= supplier.address%></p>
     <h2>Items provided by this Supplier</h2>
     <ul>
-        <% items.forEach(item => { %>
-            <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+        <% items.forEach((item, index) => { %>
+            <li>
+                <a href="/items/<%= item.id %>"><%= item.name %></a> %>
         <% }); %>
     </ul>
     <a href="/suppliers">Back to Suppliers</a>

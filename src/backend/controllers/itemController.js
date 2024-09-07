@@ -18,8 +18,16 @@ exports.getItemById = async (req, res) => {
     const result = await db.query('SELECT * FROM Item WHERE id = $1', [req.params.id]);
     if (result.rows.length > 0) {
       const item = result.rows[0];
-      const suppliers = await db.query('SELECT * FROM Supplier WHERE id IN (SELECT supplier_id FROM Item_Supplier WHERE item_id = $1)', [item.id]);
-      res.render('item', { item, suppliers: suppliers.rows });
+
+      // Lấy thông tin Category
+      const categoryResult = await db.query('SELECT * FROM Category WHERE id = $1', [item.category_id]);
+      const category = categoryResult.rows[0];
+
+      // Lấy thông tin Suppliers
+      const suppliersResult = await db.query('SELECT * FROM Supplier WHERE id IN (SELECT supplier_id FROM Item_Supplier WHERE item_id = $1)', [item.id]);
+      const suppliers = suppliersResult.rows;
+
+      res.render('item', { item, category, suppliers });
     } else {
       res.status(404).json({ message: 'Item not found' });
     }
