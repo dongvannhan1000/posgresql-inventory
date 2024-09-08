@@ -8,21 +8,21 @@
 <body>
     <h1>Welcome to Inventory App</h1>
     
-    <h2>Categories</h2>
+    <h2><a href="/categories">Categories</a></h2>
     <ul>
         <% categories.forEach(category => { %>
             <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
         <% }); %>
     </ul>
 
-    <h2>Items</h2>
+    <h2><a href="/items">Items</a></h2>
     <ul>
         <% items.forEach(item => { %>
             <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
         <% }); %>
     </ul>
 
-    <h2>Suppliers</h2>
+    <h2><a href="/suppliers">Suppliers</a></h2>
     <ul>
         <% suppliers.forEach(supplier => { %>
             <li><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></li>

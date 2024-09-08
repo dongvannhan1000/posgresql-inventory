@@ -2,6 +2,11 @@ const { Pool } = require("pg");
 require('dotenv').config();
 
 const SQL = `
+DROP TABLE IF EXISTS Item_Supplier CASCADE;
+DROP TABLE IF EXISTS Supplier CASCADE;
+DROP TABLE IF EXISTS Item CASCADE;
+DROP TABLE IF EXISTS Category CASCADE;
+
 CREATE TABLE Category (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,

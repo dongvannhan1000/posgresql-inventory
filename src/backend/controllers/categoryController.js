@@ -31,13 +31,13 @@ exports.getCategoryById = async (req, res) => {
 exports.createCategory = async (req, res) => {
   const { name, description } = req.body;
   try {
-    const result = await db.query(
-      'INSERT INTO Category (name, description) VALUES ($1, $2) RETURNING *',
-      [name, description]
-    );
-    res.status(201).json(result.rows[0]);
+      const result = await db.query(
+          'INSERT INTO Category (name, description) VALUES ($1, $2) RETURNING *',
+          [name, description]
+      );
+      res.redirect('/categories'); 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+      res.status(500).json({ error: err.message });
   }
 };
 

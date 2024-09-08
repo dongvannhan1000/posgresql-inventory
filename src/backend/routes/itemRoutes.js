@@ -7,6 +7,7 @@ router.get('/:id', itemController.getItemById);
 router.post('/', itemController.createItem);
 router.put('/:id', itemController.updateItem);
 router.delete('/:id', itemController.deleteItem);
+router.get('/:id/edit', itemController.editItem);
 router.get('/category/:categoryId', itemController.getItemsByCategory);
 
 module.exports = router;

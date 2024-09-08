@@ -39,15 +39,15 @@ exports.getSupplierById = async (req, res) => {
 };
 
 exports.createSupplier = async (req, res) => {
-  const { name, contactInfo } = req.body;
+  const { name, contact_info, address } = req.body;
   try {
-    const result = await db.query(
-      'INSERT INTO Supplier (name, contact_info) VALUES ($1, $2) RETURNING *',
-      [name, contactInfo]
-    );
-    res.status(201).json(result.rows[0]);
+      const result = await db.query(
+          'INSERT INTO Supplier (name, contact_info, address) VALUES ($1, $2, $3) RETURNING *',
+          [name, contact_info, address]
+      );
+      res.redirect('/suppliers'); 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+      res.status(500).json({ error: err.message });
   }
 };
 

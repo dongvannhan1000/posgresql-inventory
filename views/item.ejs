@@ -22,6 +22,43 @@
             <li><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></li>
         <% }); %>
     </ul>
+
+    <h1>Update Item: <%= item.name %></h1>
+    <form action="/items/<%= item.id %>?_method=PUT" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= item.name %>" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required><%= item.description %></textarea>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="<%= item.price %>" required>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" value="<%= item.stock %>" required>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" value="<%= item.brand %>" required>
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" value="<%= item.model %>" required>
+        </div>
+
+        <label for="category_id">Category:</label>
+        <select id="category_id" name="category_id" required>
+            <% categories.forEach(category => { %>
+                <option value="<%= category.id %>" <%= category.id === item.category_id ? 'selected' : '' %>><%= category.name %></option>
+            <% }); %>
+        </select>
+
+        <label for="supplier_id">Supplier:</label>
+        <select id="supplier_id" name="supplier_id" required>
+            <% suppliers.forEach(supplier => { %>
+                <option value="<%= supplier.id %>"><%= supplier.name %></option>
+            <% }); %>
+        </select>
+
+        <label for="supply_price">Supply Price:</label>
+        <input type="number" id="supply_price" name="supply_price" required>
+
+        <button type="submit">Update Item</button>
+    </form>
     <a href="/items">Back to Items</a>
 </body>
 </html>
