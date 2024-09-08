@@ -6,7 +6,9 @@ const itemRoutes = require('./src/backend/routes/itemRoutes');
 const supplierRoutes = require('./src/backend/routes/supplierRoutes');
 const createError = require('http-errors');
 const app = express();
+const methodOverride = require('method-override');
 
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
