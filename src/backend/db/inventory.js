@@ -96,6 +96,7 @@ async function main() {
     console.log("Seeding...");
     pool = new Pool({
       connectionString: process.env.DATABASE_URL,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     });
     await pool.connect();
     console.log("Connected to database");
