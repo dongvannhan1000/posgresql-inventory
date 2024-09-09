@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category Details</title>
+    <link rel="stylesheet" href="/styles/category.css">
 </head>
 <body>
-    <h1>Category: <%= category.name %></h1>
-    <p>Description: <%= category.description %></p>
-    <h2>Items in this Category</h2>
-    <ul>
-        <% items.forEach(item => { %>
-            <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
-        <% }); %>
-    </ul>
-
-    
-    <a href="/categories">Back to Categories</a>
+    <div class="container">
+        <div class="category-details">
+            <h1>Category: <%= category.name %></h1>
+            <p>Description: <%= category.description %></p>
+        </div>
+        
+        <div class="category-items">
+            <h2>Items in this Category</h2>
+            <ul>
+                <% items.forEach(item => { %>
+                    <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+                <% }); %>
+            </ul>
+        </div>
+        
+        <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn">Delete Category</button>
+        </form>
+        <a href="/categories" class="btn">Back to Categories</a>
+    </div>
 </body>
 </html>

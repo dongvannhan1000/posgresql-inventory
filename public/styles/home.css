@@ -1,0 +1,45 @@
+@import url('common.css');
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.welcome-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.section-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.section-link {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.section-link:hover {
+  transform: translateY(-5px);
+}
+
+.section-link h2 {
+  margin-bottom: 10px;
+}
+
+.section-link ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section-link li {
+  margin-bottom: 5px;
+}

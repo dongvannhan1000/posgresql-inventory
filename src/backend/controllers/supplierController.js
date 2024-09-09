@@ -70,9 +70,13 @@ exports.updateSupplier = async (req, res) => {
 
 exports.deleteSupplier = async (req, res) => {
   try {
+    // Xóa tất cả các sản phẩm liên quan đến Supplier
+    await db.query('DELETE FROM Item_Supplier WHERE supplier_id = $1', [req.params.id]);
+    
+    // Xóa Supplier
     const result = await db.query('DELETE FROM Supplier WHERE id = $1 RETURNING *', [req.params.id]);
     if (result.rows.length > 0) {
-      res.json({ message: 'Supplier deleted successfully' });
+      res.redirect('/suppliers');
     } else {
       res.status(404).json({ message: 'Supplier not found' });
     }

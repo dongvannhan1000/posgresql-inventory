@@ -1,0 +1,38 @@
+@import url('common.css');
+
+.item-details {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.item-details h1 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.item-details p {
+  margin: 5px 0;
+}
+
+.item-form {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.item-form h2 {
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 0 0 48%;
+}

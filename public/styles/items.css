@@ -1,0 +1,43 @@
+@import url('common.css');
+
+.item-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item-entry {
+  background-color: var(--primary-color);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-entry a {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.item-form {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.item-form h2 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 0 0 48%;
+}

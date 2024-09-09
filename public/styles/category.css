@@ -1,0 +1,37 @@
+@import url('common.css');
+
+.category-details {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.category-details h1 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.category-details p {
+  margin: 5px 0;
+}
+
+.category-items {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.category-items h2 {
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.category-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category-items li {
+  margin-bottom: 10px;
+}

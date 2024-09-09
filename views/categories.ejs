@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
+    <link rel="stylesheet" href="/styles/categories.css">
 </head>
 <body>
-    <h1>Categories</h1>
-    <ul>
-        <% categories.forEach(category => { %>
-            <li>
-                <a href="/categories/<%= category.id %>"><%= category.name %></a>
-            </li>
-        <% }); %>
-    </ul>
+    <div class="container">
+        <h1>Categories</h1>
+        <ul class="category-list">
+            <% categories.forEach(category => { %>
+                <li class="category-item">
+                    <a href="/categories/<%= category.id %>"><%= category.name %></a>
+                    <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
 
-    <h2>Add New Category</h2>
-    <form action="/categories" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
-
-        <button type="submit">Add Category</button>
-    </form>
-    <a href="/">Back to Home</a>
+        <div class="category-form">
+            <h2>Add New Category</h2>
+            <form action="/categories" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Add Category</button>
+            </form>
+        </div>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
 </body>
 </html>

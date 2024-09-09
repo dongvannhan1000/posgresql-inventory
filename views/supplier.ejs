@@ -4,18 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supplier Details</title>
+    <link rel="stylesheet" href="/styles/supplier.css">
 </head>
 <body>
-    <h1>Supplier: <%= supplier.name %></h1>
-    <p>Contact Info: <%= supplier.contact_info %></p>
-    <p>Address: <%= supplier.address%></p>
-    <h2>Items provided by this Supplier</h2>
-    <ul>
-        <% items.forEach((item, index) => { %>
-            <li>
-                <a href="/items/<%= item.id %>"><%= item.name %></a> %>
-        <% }); %>
-    </ul>
-    <a href="/suppliers">Back to Suppliers</a>
+    <div class="container">
+        <div class="supplier-details">
+            <h1>Supplier: <%= supplier.name %></h1>
+            <p>Contact Info: <%= supplier.contact_info %></p>
+            <p>Address: <%= supplier.address%></p>
+        </div>
+        
+        <div class="supplier-items">
+            <h2>Items provided by this Supplier</h2>
+            <ul>
+                <% items.forEach((item) => { %>
+                    <li>
+                        <a href="/items/<%= item.id %>"><%= item.name %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        
+        <form action="/suppliers/<%= supplier.id %>?_method=DELETE" method="POST" class="delete-form">
+            <button type="submit" class="btn btn-danger">Delete Supplier</button>
+        </form>
+        <a href="/suppliers" class="btn">Back to Suppliers</a>
+    </div>
 </body>
 </html>

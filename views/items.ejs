@@ -4,53 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Items</title>
+    <link rel="stylesheet" href="/styles/items.css">
 </head>
 <body>
-    <h1>Items</h1>
-    <ul>
-        <% items.forEach(item => { %>
-            <li>
-                <a href="/items/<%= item.id %>"><%= item.name %></a>
-            </li>
-        <% }); %>
-    </ul>
+    <div class="container">
+        <h1>Items</h1>
+        <ul class="item-list">
+            <% items.forEach(item => { %>
+                <li class="item-entry">
+                    <a href="/items/<%= item.id %>"><%= item.name %></a>
+                    <form action="/items/<%= item.id %>?_method=DELETE" method="POST" class="delete-form">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
 
-    <h1>Add New Item</h1>
-    <form action="/items" method="POST">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required>
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock" required>
-            <label for="brand">Brand:</label>
-            <input type="text" id="brand" name="brand" required>
-            <label for="model">Model:</label>
-            <input type="text" id="model" name="model" required>
+        <div class="item-form">
+            <h2>Add New Item</h2>
+            <form action="/items" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" required class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="category_id">Category:</label>
+                    <select id="category_id" name="category_id" required class="form-control">
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="supplier_id">Supplier:</label>
+                    <select id="supplier_id" name="supplier_id" required class="form-control">
+                        <% suppliers.forEach(supplier => { %>
+                            <option value="<%= supplier.id %>"><%= supplier.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="supply_price">Supply Price:</label>
+                    <input type="number" id="supply_price" name="supply_price" required class="form-control">
+                </div>
+
+                <button type="submit" class="btn">Add Item</button>
+            </form>
         </div>
-
-        <label for="category_id">Category:</label>
-        <select id="category_id" name="category_id" required>
-            <% categories.forEach(category => { %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-            <% }); %>
-        </select>
-
-        <label for="supplier_id">Supplier:</label>
-        <select id="supplier_id" name="supplier_id" required>
-            <% suppliers.forEach(supplier => { %>
-                <option value="<%= supplier.id %>"><%= supplier.name %></option>
-            <% }); %>
-        </select>
-
-        <label for="supply_price">Supply Price:</label>
-        <input type="number" id="supply_price" name="supply_price" required>
-
-        <button type="submit">Add Item</button>
-    </form>
-    <a href="/">Back to Home</a>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
 </body>
 </html>

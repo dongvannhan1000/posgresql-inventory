@@ -127,7 +127,7 @@ exports.deleteItem = async (req, res) => {
   try {
     const result = await db.query('DELETE FROM Item WHERE id = $1 RETURNING *', [req.params.id]);
     if (result.rows.length > 0) {
-      res.json({ message: 'Item deleted successfully' });
+      res.redirect('/items');
     } else {
       res.status(404).json({ message: 'Item not found' });
     }

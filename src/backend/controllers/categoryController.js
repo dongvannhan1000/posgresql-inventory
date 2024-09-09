@@ -60,9 +60,13 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
+    // Xóa tất cả các sản phẩm liên quan đến Category
+    await db.query('DELETE FROM Item WHERE category_id = $1', [req.params.id]);
+    
+    // Xóa Category
     const result = await db.query('DELETE FROM Category WHERE id = $1 RETURNING *', [req.params.id]);
     if (result.rows.length > 0) {
-      res.json({ message: 'Category deleted successfully' });
+      res.redirect('/categories');
     } else {
       res.status(404).json({ message: 'Category not found' });
     }
